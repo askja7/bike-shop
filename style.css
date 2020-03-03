@@ -1,0 +1,515 @@
+@font-face {
+    font-family: 'Bahnschrift Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Bahnschrift Regular'), url('fonts/BAHNSCHRIFT.woff') format('woff');
+}
+
+* {
+    font-family: "Bahnschrift Regular";
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+
+}
+
+body {
+    margin: 0px;
+    background: #f4f7f6;
+}
+/*header*/ nav {
+    position: relative;
+}
+/*header*/ nav .burger-menu {
+    position: absolute;
+    left: -40%;
+    width: 40%;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    background: #343434;
+    color: #fff;
+    transition: left 0.3s ease-out;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+
+}
+/*header*/ nav .burger-menu-icon {
+    position: absolute;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    padding-left: 15px;
+    width: 2rem;
+    height: 2rem;
+}
+/*header*/ nav .burger-menu-icon a {
+    cursor: pointer;
+}
+/*header*/ nav .burger-menu.open {
+    left: 0;
+}
+/*header*/ nav .burger-menu__toolbar {
+    margin: 0;
+    padding: 0.5rem 0 0 0.5rem;
+
+}
+/*header*/ nav .burger-menu ul {
+    list-style: none;
+    margin: 15% 0 0 30%;
+    padding: 0;
+}
+/*header*/ nav .burger-menu ul li {
+    margin: 1rem;
+    padding: 0;
+}
+
+/*header*/ nav .burger-menu ul a {
+    color: #fff;
+}
+/*header*/ nav .burger-menu ul li.active {
+    border: 0 solid transparent;
+
+}
+
+/* header */ nav .burger-menu ul li:hover {
+    color: #74afcf;
+}
+
+/* header */ nav .burger-menu ul li.active a {
+    color: #74afcf;
+}
+
+nav {
+    background: #343434;
+    z-index: 100;
+}
+
+ul {
+    margin: 0px;
+    padding-bottom: 5px;
+}
+
+nav > ul li {
+    display: inline-block;
+    padding: 5px;
+}
+
+nav > ul li h1 {
+    margin-bottom: 5px;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    align-content: center;
+}
+
+nav ul,
+.logo .center {
+    vertical-align: middle;
+}
+
+
+header nav ul li .active {
+    color: #74afcf;
+}
+
+
+header {
+    background: #343434;
+
+}
+
+a {
+    text-decoration: none;
+    color: #73AECE;
+}
+/*.banner {
+    background-image: url(https://via.placeholder.com/1000x500);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.banner_text {
+    position: absolute;
+    top: 50%;
+    right: 20%;
+    transform: translate(-50%, -50%);
+    color: #F4F7F6;
+    text-transform: uppercase;
+    background: rgba(52,52,52,0.5);
+}
+
+.banner_text > a > h2 {
+    background-color: #F4F7F6;
+    padding: 10px;
+    margin-left: -10px;
+    color: #343434;
+}*/
+.banner{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    /*z-index: -1;*/
+}
+.banner > img{
+    /*max-height: 100%;*/
+    /*position: relative;*/
+}
+.banner_text{
+    position: absolute;
+    top:60%;
+    left: 70%;
+    transform: translate(-50%,-50%);
+    padding-top: 15px;
+}
+.banner_text h2{
+    margin:0px;
+    padding: 0px 5px;
+    color: #F4F7F6;
+    font-size: 1.2rem;
+}
+.banner_text a h2{
+    background: #F4F7F6;
+    color: #343434;
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+
+
+/*.active {
+    box-shadow: 0px 5px #73AECE;
+}*/
+/*header*/ nav .burger-menu ul li.active {
+    box-shadow: 0 0 transparent;
+}
+
+main {
+    background: #F4F7F6;
+    /*min-height: 100vh;*/
+    padding-bottom: 50px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.container{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+.container img{
+	max-width: 350px;
+	padding: 70px 10px;
+    background-color: #F2F2F2;
+    border-radius: 1px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.container img {
+}
+
+.container h6 {
+    position: relative;
+    margin: 0px;
+    top: 10px;
+    left: 10px;
+    transform: translateY(100%);
+}
+
+main > div {
+    padding-top: 70px;
+}
+
+.logo img {
+    height: 2rem;
+    width: auto;
+    /*filter: invert(100%);*/
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+/*.logo img{
+    width: 10%;
+    height: auto;
+    filter: invert(100%);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #F4F7F6;
+}*/
+
+.blog {
+    background-color: white;
+}
+
+.blogEntry {
+    display: flex;
+    align-items: space-between;
+    justify-content: center;
+}
+
+.blogImg {
+    padding: 0 2rem;
+}
+
+.blogText {
+    font-size: 14px;
+    text-align: justify;
+    max-width: 960px;
+}
+
+.blogText > h2 {
+    margin-top: 0;
+}
+
+
+.more {
+    display: none;
+}
+
+#Btn {
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: 'Bahnschrift Regular';
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.bike_card{
+	margin:20px;
+    position: relative;
+}
+
+.myBtn{
+	background: none;
+	/*border: 0px;*/
+	/*margin-top: -50px;*/
+    text-align: left;
+}
+
+/*.container h4{
+    position: relative;
+    margin: 0px;
+    top: 35px;
+    transform: translateY(100%);
+    margin-left: 15px;
+    margin-top: 10px;
+}
+.container h3{
+    position: relative;
+    margin: 0px;
+    top: 40px;
+    transform: translateY(100%);
+    margin-left: 15px;
+}*/
+/*.container .name{
+    position: relative;
+    margin: 0px;
+    top: 35px;
+    transform: translateY(100%);
+    margin-left: 15px;
+    margin-top: 10px;
+}
+.container .brand{
+    position: relative;
+    margin: 0px;
+    top: 40px;
+    transform: translateY(100%);
+    margin-left: 15px;
+}*/
+
+
+.learn_more{
+    background: #343434;
+    color: #F4F7F6;
+    margin:0px;
+    padding:5px;
+    position: absolute;
+    left: 15px;
+    bottom: 20px;
+    border: 0px;
+    border-radius: 2px;
+}
+.learn_more h4{
+    padding: 0px;
+    margin: 0px;
+}
+
+.bike_card .card_brand, .bike_card .card_name{
+    position: absolute;
+    left: 15px;
+    margin: 0px;
+}
+.bike_card .card_brand{
+    top: 15px;
+}
+.bike_card .card_name{
+    top: 38px;
+}
+.hidden{
+    opacity: 1;
+    display: none;
+    /*visibility: hidden;*/
+}
+@keyframes anime{
+    0%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+.anim{
+    /*transition: opacity .8s linear;*/
+    animation: anime 0.5s ease-in-out;
+    /*opacity: 1;*/
+}
+.slider{
+    position: absolute;
+    left: 50%;
+    bottom: 3%;
+    transform: translateX(-50%);
+}
+.slider > li{
+    display: inline-block;
+}
+.slider > li > a > span{
+    display: inline-block;
+    border-radius: 50%;
+    margin: 30px 30px 10px 30px;
+    vertical-align: middle;
+    height: 15px;
+    width: 15px;
+    background: #F4F7F6;
+}
+.slider > li > a > .active{
+    animation: anim_slider 1s;
+    height: 30px;
+        width: 30px;
+
+}
+@keyframes anim_slider{
+    from{
+        height: 15px;
+        width: 15px;
+
+    }
+    to{
+        height: 30px;
+        width: 30px;
+
+    }
+}
+
+
+.modal {
+  display: none;
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  /*filter: blur(5px);*/
+  /*-webkit-filter: blur(5px);*/
+}
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  margin-bottom: 10%;
+}
+.close {
+  color: #f4f7f6;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #343434;
+  text-decoration: none;
+  cursor: pointer;
+}
+.cat{
+    text-align: left;
+}
+.cat > li {
+    font-weight: bold;
+}
+.cat > li > span{
+    font-weight: normal;
+    float: right;
+}
+
+.modal-content li{
+    margin: 15px;
+}
+.modal-content > img{
+    height: 25vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+hr{
+    border: 1px solid #343434;
+}
+.modal-content ul{
+    list-style: none;
+}
+.description{
+    text-align: left;
+    align-content: left;
+    padding: 50px;
+}
+.col_6{
+    width: 49.999999%;
+    float: left;
+}
+footer{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    background: #343434;
+    color: #f4f7f6;
+}
+footer h3{
+    margin: 20px;
+}
+footer h4{
+    margin: 10px;
+}
+.col3{
+    width: 33.3333333;
+    float: left;
+}
+.text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}

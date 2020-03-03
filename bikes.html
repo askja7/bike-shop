@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Bikes</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="vanillaSelectBox.css">
+	<link rel="stylesheet" href="style.css">
+	<!-- <link rel="stylesheet" href="mySelectBox.css"> -->
+</head>
+<body>
+	<nav>
+        <div class="burger-menu-icon">
+            <a role="button" href="#open" title="Menu">
+            	<img src="img/02.%20burger-menu.svg" width="35" height="35" alt="menu-icon">
+            </a>
+        </div>
+		<div class="logo center">
+			<a href="index.html"><img src="img/logo.svg" alt="logo"></a>
+		</div>
+		<div class="burger-menu">
+		    <div class="burger-menu__toolbar">
+		    	<a href="#close" role="button">
+		    		<img src="img/close-X.svg" width="30" height="30" alt="close-menu-icon">
+		    	</a>
+		    </div>
+            <ul>
+                <li><a href="index.html"><h1>HOME</h1></a></li>
+                <li class="active"><a href="#"><h1>BIKES</h1></a></li>
+                <li><a href="blog.html"><h1>BLOG</h1></a></li>
+                <li><a href="about.html"><h1>ABOUT</h1></a></li>
+                <li><a href="contact.html"><h1>CONTACT US</h1></a></li>
+            </ul>
+
+		</div>
+	</nav>
+	<main>
+
+		<!-- <div class="cat center">
+			<ul>
+				<li>
+					<h2>All</h2>
+				</li>
+				<li>
+					<h2>Road</h2>
+				</li>
+				<li>
+					<h2>Mountain</h2>
+				</li>
+				<li>
+					<h2>Electric</h2>
+				</li>
+				<li>
+					<h2>Fatbike</h2>
+				</li>
+				<li>
+					<h2>Urban</h2>
+				</li>
+			</ul>
+		</div> -->
+			<!-- <select name="category" id="type">
+					<option value="Road"></option>
+					<option value="Mountain"></option>
+					<option value="Electric"></option>
+					<option value="Fatbike"></option>
+					<option value="Urban"></option>
+			</select><br>
+			<select name="year" id="year">
+					<option value="2017"></option>
+					<option value="2018"></option>
+					<option value="2019"></option>
+					<option value="2020"></option>
+			</select><br>
+			<select name="gender" id="gender">
+					<option value="Unisex"></option>
+					<option value="Men"></option>
+					<option value="Women"></option>
+					<option value="Kids"></option>
+			</select> -->
+		<div class="container">
+			<template class="bike_template">
+				<div class="bike_card">
+					<h3 class="card_brand">Brand</h3>
+					<h4 class="card_name">Name</h4>
+					<img src="" alt="" class="card_bike_img">
+					<button class="learn_more" onclick="showModule(this.id)">
+						<h4>Learn more</h4>
+					</button>
+				</div>
+			</template>
+		</div>
+	</main>
+
+
+		<!-- The Modal -->
+		<!-- <template class="modal_template"> -->
+			<div id="myModal" class="modal">
+				<div class="modal-content center">
+					<!-- <span class="close">&times;</span> -->
+				    <h2><span class="cat_brand">brand</span></h2>
+				    <h3><span class="cat_name">name</span></h3>
+				    <img src="img/bikes/6_cube-c68_2020.png" alt="bike" class="cat_bike_img">
+				    <div class="container">
+				    	<div class="col_6">
+			    			<ul class="cat">
+			    				<li>Name<span class="cat_type">test</span></li>
+			    				<hr>
+			    				<li>Year<span class="cat_year">test</span></li>
+			    				<hr>
+			    				<li>Color<span class="cat_color">test</span></li>
+			    				<hr>
+			    				<li>Rider<span class="cat_rider">test</span></li>
+			    				<hr>
+			    				<li>Gears<span class="cat_gears">test</span></li>
+			    				<hr>
+			    				<li>Weight<span class="cat_weight">test</span></li>
+			    				<hr>
+			    				<li>Frame_material<span class="cat_material">test</span></li>
+			    				<hr>
+			    				<li>Frame_size<span class="cat_size">test</span></li>
+			    				<hr>
+			    				<li>Wheels_size<span class="cat_wheels">test</span></li>
+			    				<hr>
+			    				<li>Breaks<span class="cat_breaks">test</span></li>
+			    				<hr>
+			    			</ul>
+				    	</div>
+				    	<div class="col_6">
+				    		<div class="description">
+					    		<h4>Description</h4>
+				    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis illo velit fugit quaerat necessitatibus quas ullam. Aliquid adipisci, eaque quod, iure, eius minus repellendus eum fugiat tempore, est quibusdam placeat.</p>
+				    		</div>
+
+				    	</div>
+				    </div>
+				</div>
+			</div>
+		<!-- </template> -->
+
+	<footer class="container">
+		<div class="col3">
+			<div>
+				<h3>You have any questions?<br>We have answers</h3>
+				<h4>+45 65 89 78 45</h4>
+				<h4>Mon-Fri 08.00 - 18.30</h4>
+				<h4>Sat 09.00 - 13.00</h4>
+			</div>
+		</div>
+		<div class="col3">
+			<div>
+				<h3>PAYMENT OPTIONS</h3>
+				<h4>Credit Card</h4>
+				<h4>PayPal</h4>
+			</div>
+		</div>
+		<div class="col3">
+			<div>
+				<h3>LEGAL</h3>
+				<h4>About us</h4>
+				<h4>Policy</h4>
+				<h4>GDPR</h4>
+			</div>
+		</div>
+		<div class="col3">
+			<div>
+				<h3>FOLLOW US</h3>
+				<h4>Facebook</h4>
+				<h4>Instagram</h4>
+				<h4>Twitter</h4>
+			</div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
+	<!-- <script src="modal.js"></script> -->
+	<!-- <script src="vanillaSelectBox.js"></script> -->
+	<!-- <script src="mySelectBox.js"></script> -->
+</body>
+</html>
