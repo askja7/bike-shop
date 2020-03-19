@@ -1,47 +1,56 @@
-const banner = document.querySelectorAll(".banner img");
-if (banner[0].clientHeight <= document.documentElement.clientHeight) {
-	banner[0].style="width:100%";
-}
-else {
-	banner[0].style="height:100%";
-}
-if (banner[1].clientHeight <= document.documentElement.clientHeight) {
-	banner[1].style="height:100%";
-}
-else {
-	banner[1].style="width:100%";
-}
-if (banner[2].clientHeight <= document.documentElement.clientHeight) {
-	banner[2].style="height:100%";
-}
-else {
-	banner[2].style="width:100%";
-}
-let banner_path = "file:///C:/Users/madci/Desktop/OhWheelie-master/img/home/";
-const first_photo = "first-photo.jpg";
-const second_photo = "second-photo.jpg";
-const third_photo = "third-photo.jpg";
-const slider = document.querySelectorAll(".slider li a span")
-setInterval(function(){
+var slide = 1;
 
-	if ((banner[0].classList.contains("hidden"))==false) {
-		banner[0].classList.add("hidden");
-		banner[1].classList.remove("hidden");
-		slider[1].classList.add("active");
-		slider[0].classList.remove("active");
+function setStripPos() {
+	if (slide === 1) {
+		document.querySelector(".strip").style.transform = "translateX(0)";
+	} else if (slide === 2) {
+		document.querySelector(".strip").style.transform = "translateX(-33.3333333%)";
+	} else if (slide === 3) {
+		document.querySelector(".strip").style.transform = "translateX(-66.6666666%)";
+	}
+}
 
-	}
-	else if((banner[1].classList.contains("hidden"))==false){
-		banner[1].classList.add("hidden");
-		banner[2].classList.remove("hidden");
-		slider[2].classList.add("active");
-		slider[1].classList.remove("active");
-	}
-	else{
-		banner[2].classList.add("hidden");
-		banner[0].classList.remove("hidden");
-		slider[0].classList.add("active");
-		slider[2].classList.remove("active");
-	}
-}, 5000)
+function setActiveDot() {
+	document.querySelectorAll(".slider.center ul li a span").forEach(function(span, idx) {
+		span.classList.remove("active");
+		if ((idx + 1) === slide) {
+			span.classList.add("active");
+		}
+	});
+}
 
+function arrowLeftClicked(e) {
+	e.preventDefault();
+	if (slide > 1) {
+		slide--;
+		setStripPos();
+		setActiveDot();
+	}
+}
+
+function arrowRightClicked(e) {
+	e.preventDefault();
+	if (slide < 3) {
+		slide++;
+		setStripPos();
+		setActiveDot();
+	}
+}
+
+function dotClicked(e) {
+	e.preventDefault();
+	let a = e.target.href ? e.target : e.target.parentNode;
+	let href = a.getAttribute("href");
+	slide = parseInt(href.replace("#slide", ""), 10);
+	setStripPos();
+	setActiveDot();
+}
+
+
+window.addEventListener("DOMContentLoaded", function() {
+	document.getElementById("arrowLeft").addEventListener("click", arrowLeftClicked);
+	document.getElementById("arrowRight").addEventListener("click", arrowRightClicked);
+	document.querySelectorAll(".slider.center ul li a").forEach(function(a) {
+		a.addEventListener("click", dotClicked);
+	});
+});

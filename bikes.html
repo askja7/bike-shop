@@ -58,37 +58,50 @@
 				</li>
 			</ul>
 		</div> -->
-			<!-- <select name="category" id="type">
-					<option value="Road"></option>
-					<option value="Mountain"></option>
-					<option value="Electric"></option>
-					<option value="Fatbike"></option>
-					<option value="Urban"></option>
-			</select><br>
-			<select name="year" id="year">
-					<option value="2017"></option>
-					<option value="2018"></option>
-					<option value="2019"></option>
-					<option value="2020"></option>
-			</select><br>
-			<select name="gender" id="gender">
-					<option value="Unisex"></option>
-					<option value="Men"></option>
-					<option value="Women"></option>
-					<option value="Kids"></option>
-			</select> -->
-		<div class="container">
-			<template class="bike_template">
-				<div class="bike_card">
-					<h3 class="card_brand">Brand</h3>
-					<h4 class="card_name">Name</h4>
-					<img src="" alt="" class="card_bike_img">
-					<button class="learn_more" onclick="showModule(this.id)">
-						<h4>Learn more</h4>
-					</button>
-				</div>
-			</template>
+		<div class="filters">
+			<div class="filter">
+				<select name="category" id="category">
+					<option value="">Category</option>
+					<option value="road">Road</option>
+					<option value="mountainbike">Mountain</option>
+					<option value="electric">Electric</option>
+					<option value="fatbike">Fatbike</option>
+					<option value="urban">Urban</option>
+				</select>
+			</div>
+			<div class="filter">
+				<select name="year" id="year">
+					<option value="">Year</option>
+					<option value="2020">2020</option>
+					<option value="2019">2019</option>
+					<option value="2018">2018</option>
+					<option value="2017">2017</option>
+				</select>
+			</div>
+			<div class="filter">
+				<select name="gender" id="gender">
+					<option value="">Gender</option>
+					<option value="Unisex">Unisex</option>
+					<option value="Men">Men</option>
+					<option value="Women">Women</option>
+					<option value="Kids">Kids</option>
+				</select>
+			</div>
+			<div>
+				<button type="reset" id="clearButton">Clear</button>
+			</div>
 		</div>
+		<div class="container" id="bikesGrid"></div>
+		<template class="bike_template">
+			<div class="bike_card">
+				<h3 class="card_brand">Brand</h3>
+				<h4 class="card_name">Name</h4>
+				<img src="" alt="" class="card_bike_img">
+				<button class="learn_more" onclick="showModule(this.id)">
+					<h4>Learn more</h4>
+				</button>
+			</div>
+		</template>
 	</main>
 
 

@@ -36,28 +36,51 @@
 		</div> -->
 	</header>
 
-	<div class="banner">
-
-		<img src="img/home/first-photo.jpg" alt="banner" class="anim">
-		<img src="img/home/second-photo.jpg" alt="banner" class="anim">
-		<img src="img/home/third-photo.jpg" alt="banner" class="anim">
+	<main>
+		<div class="banner">
+			<div class="strip">
+				<div class="slide" style="background-image: url(img/home/first-photo.jpg);">
+					<div class="banner_text">
+						<h2>ENJOY LIFE</h2>
+						<h2>FEEL GOOD</h2>
+						<h2>RIDE A BIKE</h2>
+						<a href="bikes.html"><h2>FIND A BIKE</h2></a>
+					</div>			
+				</div>
+				<div class="slide" style="background-image: url(img/home/second-photo.jpg);">
+					<div class="banner_text">
+						<h2>STORIES AND</h2>
+						<h2>ADVENTURES</h2>
+						<a href="blog.html"><h2>READ OUR BLOG</h2></a>
+					</div>			
+				</div>
+				<div class="slide" style="background-image: url(img/home/third-photo.jpg);">
+					<div class="banner_text">
+						<h2>THESE ARE THE</h2>
+						<h2>MINDS BEHIND</h2>
+						<h2>THE WHEEL</h2>
+						<a href="about.html"><h2>READ ABOUT US</h2></a>
+					</div>			
+				</div>
+			</div>
+			<!--
+			<img src="img/home/first-photo.jpg" alt="banner" class="anim">
+			<img src="img/home/second-photo.jpg" alt="banner" class="anim">
+			<img src="img/home/third-photo.jpg" alt="banner" class="anim">
+			-->
+		</div>
 		<div class="slider center">
-			<li><a href=""><span class="active">&nbsp;</span></a></li>
-			<li><a href=""><span>&nbsp;</span></a></li>
-			<li><a href=""><span>&nbsp;</span></a></li>
+			<ul>
+				<li><a href="#slide1"><span class="active">&nbsp;</span></a></li>
+				<li><a href="#slide2"><span>&nbsp;</span></a></li>
+				<li><a href="#slide3"><span>&nbsp;</span></a></li>
+			</ul>
 		</div>
-		<div class="banner_text">
-			<h2>ENJOY LIFE.</h2>
-			<h2>FEEL GOOD.</h2>
-			<h2>RIDE A BIKE.</h2>
-			<a href="bikes.html"><h2>FIND A BIKE</h2></a>
+		<div class="slider-arrows">
+			<a href="#left" id="arrowLeft" class="arrow-left" aria-label="Previous label"></a>
+			<a href="#right" id="arrowRight" class="arrow-right" aria-label="Next label"></a>
 		</div>
-
-	</div>
-	<footer>
-		<!-- credits etc. -->
-		<!-- <h1>footer</h1> -->
-	</footer>
+	</main>
 	<script src="script.js"></script>
 	<script src="carousel.js"></script>
 </body>

@@ -1,35 +1,122 @@
 const link = "https://spreadsheets.google.com/feeds/list/1c_aP8TUuOLRLSGDlnVhXoUHLZuwBGa3XFl3akgGpi7c/1/public/values?alt=json"
-window.addEventListener("DOMContentLoaded", getData);
 
-function getData(){
+/* Filter functions for grid view */
+function getFilterValue(id) {
+    let select = document.getElementById(id);
+    if (select && select.selectedIndex > 0) {
+        return select.options[select.selectedIndex].value;
+    }
+    return "";
+}
+
+function setFilterValue(id, value) {
+    let select = document.getElementById(id);
+    if (select) {
+        for (let i = 0; i < select.options.length; i++) {
+            select.options[i].selected = (select.options[i].value === value);
+        }
+    }
+}
+
+function filterChange() {
+    let search = new URLSearchParams("");
+    let category = getFilterValue("category");
+    let year = getFilterValue("year");
+    let gender = getFilterValue("gender");
+    if (category !== "") {
+        search.append("category", category);
+    }
+    if (year !== "") {
+        search.append("year", year);
+    }
+    if (gender !== "") {
+        search.append("gender", gender);
+    }
+    history.replaceState({}, 'Bikes', window.location.pathname + '?' + search.toString());
+    getData();
+}
+
+function clearFilters() {
+    history.replaceState({}, 'Bikes', window.location.pathname);
+    getData();
+}
+
+/* Setup event listeners */
+window.addEventListener("DOMContentLoaded", function() {
+    if (window.location.pathname.endsWith("bikes.html")) {
+        getData();
+        document.getElementById("category").addEventListener("change", filterChange);
+        document.getElementById("year").addEventListener("change", filterChange);
+        document.getElementById("gender").addEventListener("change", filterChange);
+        document.getElementById("clearButton").addEventListener("click", clearFilters);
+    }
+
+    document.querySelector(".burger-menu__toolbar a").addEventListener("click", toggleMenu);
+    document.querySelector(".burger-menu-icon a").addEventListener("click", toggleMenu);
+});
+
+/* Data loading and template transforming */
+function getData() {
+    let search = new URLSearchParams(window.location.search);
+
+    let filters = {
+        category: search.get('category'),
+        year: search.get('year'),
+        gender: search.get('gender')
+    };
+
+    setFilterValue("category", filters.category);
+    setFilterValue("year", filters.year);
+    setFilterValue("gender", filters.gender);
+
 	fetch(link)
 		.then(res => res.json())
-		.then(handleData);
+		.then(data => handleData(data, filters));
 }
-function handleData(data){
-	const myData = data.feed.entry;
-	console.log(myData);
-	myData.forEach(showData);
+
+function handleData(data, filters) {
+    const myData = data.feed.entry;
+
+    // Clear the container
+    document.getElementById("bikesGrid").innerHTML = "";
+    myData
+        .filter(bike => 
+            (!filters.category || filters.category === bike.gsx$category.$t) &&
+            (!filters.year || filters.year === bike.gsx$year.$t) &&
+            (
+                !filters.gender || 
+                filters.gender === bike.gsx$rider.$t ||
+                (
+                    filters.gender === "Kids" && (
+                        bike.gsx$rider.$t === "Boy" ||
+                        bike.gsx$rider.$t === "Girl"
+                    )
+                )
+            )
+        )
+        .forEach(showData);
 }
-function showData(singleRowData){
+
+function showData(singleRowData) {
 	const bike_template = document.querySelector(".bike_template").content;
 	const clone = bike_template.cloneNode(true);
 	const brand = clone.querySelector(".card_brand");
 	const name = clone.querySelector(".card_name");
 	const bike_img = clone.querySelector(".card_bike_img");
     const buttonn = clone.querySelector(".learn_more");
+
     buttonn.id=singleRowData.gsx$id.$t;
 	brand.textContent = singleRowData.gsx$brand.$t;
 	name.textContent = singleRowData.gsx$name.$t;
 	bike_img.alt = singleRowData.gsx$image.$t;
-	singleRowData.gsx$image.$t = "img/bikes/" + singleRowData.gsx$image.$t + ".png";
-	if (singleRowData.gsx$image.$t == "img/bikes/.png") {
+	singleRowData.gsx$image.$t = "img/bikes/" + singleRowData.gsx$image.$t + ".png";    
+    if (singleRowData.gsx$image.$t == "img/bikes/.png") {
 		bike_img.src = "https://via.placeholder.com/300x100";
-	}
-	else{
+	} else {
 		bike_img.src = singleRowData.gsx$image.$t;
 	}
-	document.querySelector(".container").appendChild(clone);
+    
+    document.getElementById("bikesGrid").appendChild(clone);
 }
 
 function toggleMenu(e) {
@@ -42,10 +129,6 @@ function toggleMenu(e) {
     e.preventDefault();
 }
 
-window.addEventListener("DOMContentLoaded", function () {
-    document.querySelector(".burger-menu__toolbar a").addEventListener("click", toggleMenu);
-    document.querySelector(".burger-menu-icon a").addEventListener("click", toggleMenu);
-});
 function readFunction(e) {
     var Btn = e.target;
     var blogText = Btn.closest(".blogText");
