@@ -198,6 +198,7 @@ a {
     left: 0;
     right: 0;
     padding: 0 10px;    
+    z-index: 10;
 }
 
 .slider-arrows .arrow-left {
@@ -205,7 +206,6 @@ a {
     background: url(img/arrow-go-left.svg) no-repeat;
     width: 38px;
     height: 52px;
-    z-index: 100;
 }
 
 .slider-arrows .arrow-right {
@@ -213,7 +213,6 @@ a {
     background: url(img/arrow-go-right.svg) no-repeat;
     width: 38px;
     height: 52px;
-    z-index: 100;
 }
 
 nav .burger-menu ul li.active {
@@ -224,14 +223,21 @@ main {
     background: #F4F7F6;
     min-height: calc(100vh - 67px);
     padding-bottom: 50px;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 @media screen and (min-width: 768px) {
     main {
         background: #F4F7F6;
         min-height: calc(100vh - 67px - 216px);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    main {
+        padding-left: 10%;
+        padding-right: 10%;
     }
 }
 
@@ -242,7 +248,7 @@ main {
 	align-items: center;
 }
 
-.container img {
+.card_bike_img {
 	max-width: 350px;
 	padding: 70px 10px;
     background-color: #F2F2F2;
@@ -333,12 +339,28 @@ main > div.banner {
 }
 
 .filters {
-    display: flex;
-    justify-content: flex-start;
+    margin-top: -50px;
+    margin-left: 8px;
+}
+
+@media screen and (min-width: 768px) {
+    .filters {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 0;
+    }
 }
 
 .filters .filter {
-    border-right: 1px solid #343434;
+    border-bottom: 1px solid #ddd;
+    padding: 8px 0;
+}
+
+@media screen and (min-width: 768px) {
+    .filters .filter {
+        border-right: 1px solid #343434;
+        border-bottom: 0 solid transparent;
+    }
 }
 
 .filters button {
@@ -346,14 +368,33 @@ main > div.banner {
     background-color: #343434;
     padding: 6px 10px;
     color: #fff;
+    width: 40%;
+    padding: 16px;
 }
+
+@media screen and (min-width: 768px) {
+    .filters button { 
+        padding: 10px 8px;
+        width: auto;
+    }
+}
+
 
 .filters > div {
     margin-right: 10px;
 }
 
 .filters > div:last-child {
-    padding-left: 10px;
+    text-align: right;
+    padding-top: 8px;
+}
+
+@media screen and (min-width: 768px) {
+    .filters > div:last-child {
+        padding-left: 10px;
+        text-align: left;
+        padding-top: 0;
+    }
 }
 
 .filters select {
@@ -364,11 +405,18 @@ main > div.banner {
     -webkit-appearance: none;
     appearance: none;
     background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2215%22%20height%3D%229%22%20viewBox%3D%220%200%2015%209%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cline%20x1%3D%220.353553%22%20y1%3D%220.646447%22%20x2%3D%227.85355%22%20y2%3D%228.14645%22%20stroke%3D%22black%22%2F%3E%3Cline%20y1%3D%22-0.5%22%20x2%3D%2210.6066%22%20y2%3D%22-0.5%22%20transform%3D%22matrix(-0.707107%200.707107%200.707107%200.707107%2015%201)%22%20stroke%3D%22black%22%2F%3E%3C%2Fsvg%3E');
-    background-position: 80% center;
+    background-position: 98% center;
     background-repeat: no-repeat;
     padding-right: 36px;
-    width: 110px;
+    width: 100%;
     text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .filters select {
+        background-position: 80% center;
+        width: 110px;
+    }
 }
 
 .filters select::-ms-expand {
@@ -376,7 +424,7 @@ main > div.banner {
 }
 
 .bike_card {
-	margin:20px;
+	margin: 20px 0;
     position: relative;
 }
 
@@ -474,48 +522,93 @@ main > div.banner {
 }
 
 .modal {
-  display: none;
-  position: fixed; /* Stay in place */
-  z-index: 1000; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  /*filter: blur(5px);*/
-  /*-webkit-filter: blur(5px);*/
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+
 .modal-content {
-  background-color: #fff;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  margin-bottom: 10%;
+    position: relative;
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 94%;
+    margin-bottom: 10%;
+}
+
+@media screen and (min-width: 992px) {
+    .modal-content {
+        width: 80%;
+    }   
+}
+
+.price-bar {
+    display: block;
+    border-top: 2px solid #343434;
+    border-bottom: 2px solid #343434;
+    padding: 8px 0;
+    margin-bottom: 8px;
+}
+
+@media screen and (min-width: 768px) {
+    .price-bar {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .price-bar .col {
+        width: 50%;
+    }
+
+    .price-bar .col:last-child {
+        text-align: right;
+    }
+}
+
+.cart-bar button {
+    border: 0 solid transparent;
+    background-color: #343434;
+    padding: 6px 10px;
+    color: #fff;
+    font-size: 16px;
+    width: 100%;
+    padding: 16px 0;
 }
 
 .close {
-  color: #f4f7f6;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+    position: absolute;
+    display: block;
+    top: 16px; 
+    right: 16px;
+    color: #ccc;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: #343434;
-  text-decoration: none;
-  cursor: pointer;
+    color: #343434;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .cat {
+    padding: 0;
     text-align: left;
 }
 
 .cat > li {
+    padding: 0;
     font-weight: bold;
 }
 
@@ -525,7 +618,7 @@ main > div.banner {
 }
 
 .modal-content li {
-    margin: 15px;
+    margin: 15px 0;
 }
 
 .modal-content > img {
@@ -545,12 +638,23 @@ hr {
 .description {
     text-align: left;
     align-content: left;
-    padding: 50px;
+    padding: 16px 0;
+}
+
+@media screen and (min-width: 992px) {
+    .description {
+        padding: 50px;
+    }   
 }
 
 .col_6 {
-    width: 49.999999%;
-    float: left;
+    width: 100%;
+}
+
+@media screen and (min-width: 992px) {
+    .col_6 {
+        width: 50%;
+    }
 }
 
 footer {
@@ -587,10 +691,13 @@ footer h3 {
 footer h4 {
     margin: 10px 0;
 }
+footer h4 a {
+    color: #fff;
+}
 
 .text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100vh - 67px - 216px - 50px);
 }

@@ -36,28 +36,6 @@
 	</nav>
 	<main>
 
-		<!-- <div class="cat center">
-			<ul>
-				<li>
-					<h2>All</h2>
-				</li>
-				<li>
-					<h2>Road</h2>
-				</li>
-				<li>
-					<h2>Mountain</h2>
-				</li>
-				<li>
-					<h2>Electric</h2>
-				</li>
-				<li>
-					<h2>Fatbike</h2>
-				</li>
-				<li>
-					<h2>Urban</h2>
-				</li>
-			</ul>
-		</div> -->
 		<div class="filters">
 			<div class="filter">
 				<select name="category" id="category">
@@ -91,64 +69,77 @@
 				<button type="reset" id="clearButton">Clear</button>
 			</div>
 		</div>
+
 		<div class="container" id="bikesGrid"></div>
 		<template class="bike_template">
 			<div class="bike_card">
 				<h3 class="card_brand">Brand</h3>
 				<h4 class="card_name">Name</h4>
 				<img src="" alt="" class="card_bike_img">
-				<button class="learn_more" onclick="showModule(this.id)">
+				<button class="learn_more" onclick="openModal(this.id)">
 					<h4>Learn more</h4>
 				</button>
 			</div>
 		</template>
+		
 	</main>
 
 
-		<!-- The Modal -->
-		<!-- <template class="modal_template"> -->
-			<div id="myModal" class="modal">
-				<div class="modal-content center">
-					<!-- <span class="close">&times;</span> -->
-				    <h2><span class="cat_brand">brand</span></h2>
-				    <h3><span class="cat_name">name</span></h3>
-				    <img src="img/bikes/6_cube-c68_2020.png" alt="bike" class="cat_bike_img">
-				    <div class="container">
-				    	<div class="col_6">
-			    			<ul class="cat">
-			    				<li>Name<span class="cat_type">test</span></li>
-			    				<hr>
-			    				<li>Year<span class="cat_year">test</span></li>
-			    				<hr>
-			    				<li>Color<span class="cat_color">test</span></li>
-			    				<hr>
-			    				<li>Rider<span class="cat_rider">test</span></li>
-			    				<hr>
-			    				<li>Gears<span class="cat_gears">test</span></li>
-			    				<hr>
-			    				<li>Weight<span class="cat_weight">test</span></li>
-			    				<hr>
-			    				<li>Frame_material<span class="cat_material">test</span></li>
-			    				<hr>
-			    				<li>Frame_size<span class="cat_size">test</span></li>
-			    				<hr>
-			    				<li>Wheels_size<span class="cat_wheels">test</span></li>
-			    				<hr>
-			    				<li>Breaks<span class="cat_breaks">test</span></li>
-			    				<hr>
-			    			</ul>
-				    	</div>
-				    	<div class="col_6">
-				    		<div class="description">
-					    		<h4>Description</h4>
-				    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis illo velit fugit quaerat necessitatibus quas ullam. Aliquid adipisci, eaque quod, iure, eius minus repellendus eum fugiat tempore, est quibusdam placeat.</p>
-				    		</div>
-
-				    	</div>
-				    </div>
+	<!-- Modal: Start -->
+	<div id="myModal" class="modal">
+		<div class="modal-content center">
+			<a class="close" href="#close">&times;</a>
+			<h2><span class="cat_brand">brand</span></h2>
+			<h3><span class="cat_name">name</span></h3>
+			<img src="img/bikes/6_cube-c68_2020.png" alt="bike" class="cat_bike_img">
+			<div class="container">
+				<div class="col_6">
+					<ul class="cat">
+						<li>Name<span class="cat_type">test</span></li>
+						<hr>
+						<li>Year<span class="cat_year">test</span></li>
+						<hr>
+						<li>Color<span class="cat_color">test</span></li>
+						<hr>
+						<li>Rider<span class="cat_rider">test</span></li>
+						<hr>
+						<li>Gears<span class="cat_gears">test</span></li>
+						<hr>
+						<li>Weight<span class="cat_weight">test</span></li>
+						<hr>
+						<li>Frame_material<span class="cat_material">test</span></li>
+						<hr>
+						<li>Frame_size<span class="cat_size">test</span></li>
+						<hr>
+						<li>Wheels_size<span class="cat_wheels">test</span></li>
+						<hr>
+						<li>Breaks<span class="cat_breaks">test</span></li>
+						<hr>
+					</ul>
 				</div>
+				<div class="col_6">
+					<div class="description">
+						<h4>Description</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis illo velit fugit quaerat necessitatibus quas ullam. Aliquid adipisci, eaque quod, iure, eius minus repellendus eum fugiat tempore, est quibusdam placeat.</p>
+						<h4>Price</h4>
+						<div class="price-bar">
+							<div class="col">
+								<span class="price_desc"></span>
+							</div>
+							<div class="col">
+								<span class="price_amount"></span>
+							</div>
+						</div>
+						<div class="cart-bar">
+							<button type="button">Add to cart</button>
+						</div>
+					</div>
+				</div>
+				
 			</div>
-		<!-- </template> -->
+		</div>
+	</div>
+	<!-- Modal: Stop -->
 
 	<footer class="container">
 		<div class="col3">
@@ -162,30 +153,28 @@
 		<div class="col3">
 			<div>
 				<h3>PAYMENT OPTIONS</h3>
-				<h4>Credit Card</h4>
-				<h4>PayPal</h4>
+				<h4><a href="#creditcard">Credit Card</a></h4>
+				<h4><a href="#paypal">PayPal</a></h4>
 			</div>
 		</div>
 		<div class="col3">
 			<div>
 				<h3>LEGAL</h3>
-				<h4>About us</h4>
-				<h4>Policy</h4>
-				<h4>GDPR</h4>
+				<h4><a href="about.html">About us</a></h4>
+				<h4><a href="#policy">Policy</a></h4>
+				<h4><a href="#gdpr">GDPR</a></h4>
 			</div>
 		</div>
 		<div class="col3">
 			<div>
 				<h3>FOLLOW US</h3>
-				<h4>Facebook</h4>
-				<h4>Instagram</h4>
-				<h4>Twitter</h4>
+				<h4><a href="#facebook" target="_blank">Facebook</a></h4>
+				<h4><a href="#instagram" target="_blank">Instagram</a></h4>
+				<h4><a href="#twitter" target="_blank">Twitter</a></h4>
 			</div>
 		</div>
 	</footer>
+
 	<script src="script.js"></script>
-	<!-- <script src="modal.js"></script> -->
-	<!-- <script src="vanillaSelectBox.js"></script> -->
-	<!-- <script src="mySelectBox.js"></script> -->
 </body>
 </html>

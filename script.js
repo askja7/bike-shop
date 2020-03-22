@@ -49,6 +49,10 @@ window.addEventListener("DOMContentLoaded", function() {
         document.getElementById("year").addEventListener("change", filterChange);
         document.getElementById("gender").addEventListener("change", filterChange);
         document.getElementById("clearButton").addEventListener("click", clearFilters);
+        document.querySelector(".close").addEventListener("click", function(e) {
+            e.preventDefault();
+            closeModal();
+        });
     }
 
     document.querySelector(".burger-menu__toolbar a").addEventListener("click", toggleMenu);
@@ -154,92 +158,69 @@ var btn = document.getElementById("myBtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-let important;
+
 // When the user clicks on the button, open the modal
-function showModule(e) {
+function openModal(id) {
   modal.style.display = "block";
-  console.log(e);
-  important = e;
   fetch(link)
         .then(res => res.json())
-        .then(doData);
+        .then(sheet => findBike(sheet, id));
 }
-function doData(ndata){
-    const newData = ndata.feed.entry;
-    console.log(newData);
-    newData.forEach(shownData);
+
+function closeModal() {
+    modal.style.display = "none";
 }
-function shownData(single){
-    const mod = document.querySelector(".modal-content")
-    const clone = mod.cloneNode(true);
 
-    const key = single.gsx$id.$t;
-    // console.log(important)
-    // console.log(key);
-    if (important==key) {
-        const brand = document.querySelector(".cat_brand");
-        const name = document.querySelector(".cat_name");
-        const bike_img = document.querySelector(".cat_bike_img");
-        const type = document.querySelector(".cat_type");
-        const year = document.querySelector(".cat_year");
-        const color = document.querySelector(".cat_color");
-        const rider = document.querySelector(".cat_rider");
-        const gears = document.querySelector(".cat_gears");
-        const weight = document.querySelector(".cat_weight");
-        const material = document.querySelector(".cat_material");
-        const size = document.querySelector(".cat_size");
-        const wheels = document.querySelector(".cat_wheels");
-        const breaks = document.querySelector(".cat_breaks");
-        const descr = document.querySelector(".description p");
-
-        bike_img.src="img/bikes/" + single.gsx$image.$t + ".png";
-
-        brand.textContent = single.gsx$brand.$t;
-        name.textContent = single.gsx$name.$t;
-        year.textContent = single.gsx$year.$t;
-        color.textContent = single.gsx$color.$t;
-        rider.textContent = single.gsx$rider.$t;
-        breaks.textContent = single.gsx$breaks.$t;
-        wheels.textContent = single.gsx$wheelsizeinches.$t;
-        size.textContent = single.gsx$framesize.$t;
-        gears.textContent = single.gsx$gearsspeed.$t;
-        weight.textContent = single.gsx$weigthkg.$t;
-        material.textContent = single.gsx$framematerial.$t;
-        type.textContent = single.gsx$name.$t;
-
-        descr.textContent = single.gsx$description.$t;
-
+function findBike(sheet, id){
+    const data = sheet.feed.entry;
+    const bike = data.find(function(b) { return b.gsx$id.$t == id});
+    if (bike) {
+        showBike(bike);
+    } else {
+        alert("Unable to fetch bike data - sorry about that!");
     }
-
 }
-// When the user clicks on <span> (x), close the modal
-// span.onclick = function() {
-//   modal.style.display = "none";
-// }
+
+function showBike(bike) {
+    console.log("bike: ", bike);
+    const brand = document.querySelector(".cat_brand");
+    const name = document.querySelector(".cat_name");
+    const bike_img = document.querySelector(".cat_bike_img");
+    const type = document.querySelector(".cat_type");
+    const year = document.querySelector(".cat_year");
+    const color = document.querySelector(".cat_color");
+    const rider = document.querySelector(".cat_rider");
+    const gears = document.querySelector(".cat_gears");
+    const weight = document.querySelector(".cat_weight");
+    const material = document.querySelector(".cat_material");
+    const size = document.querySelector(".cat_size");
+    const wheels = document.querySelector(".cat_wheels");
+    const breaks = document.querySelector(".cat_breaks");
+    const descr = document.querySelector(".description p");
+    const price_desc = document.querySelector(".price_desc");
+    const price_amount = document.querySelector(".price_amount");
+
+    bike_img.src="img/bikes/" + bike.gsx$image.$t + ".png";
+    brand.textContent = bike.gsx$brand.$t;
+    name.textContent = bike.gsx$name.$t;
+    year.textContent = bike.gsx$year.$t;
+    color.textContent = bike.gsx$color.$t;
+    rider.textContent = bike.gsx$rider.$t;
+    breaks.textContent = bike.gsx$breaks.$t;
+    wheels.textContent = bike.gsx$wheelsizeinches.$t;
+    size.textContent = bike.gsx$framesize.$t;
+    gears.textContent = bike.gsx$gearsspeed.$t;
+    weight.textContent = bike.gsx$weigthkg.$t;
+    material.textContent = bike.gsx$framematerial.$t;
+    type.textContent = bike.gsx$name.$t;
+    descr.textContent = bike.gsx$description.$t;
+    price_desc.textContent = bike.gsx$brand.$t + " " + bike.gsx$name.$t + ", " + bike.gsx$color.$t;
+    price_amount.textContent = bike.gsx$price.$t;
+}
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
-    modal.style.display = "none";
+    this.closeModal();
   }
 }
-
-// function filterBy(data, filters = {}) {
-//   ** Set up the specific defaults that will show everything:
-//   const defaults = {
-//     category: null,
-//     yearFrom: 1895,
-//     yearTo: 2100,
-//     gender: null
-//   }
-
-//   ** Merge any filters with the defaults
-//   filters = Object.assign({}, defaults, filters);
-
-//   ** Filter based on that filters object:
-//   return data.filter(laur => {
-//     return (laur.yearFrom >= filters.yearFrom) &&
-//            (laur.yearTo <= filters.yearTo) &&
-//            **and so on
-//   });
-// }
